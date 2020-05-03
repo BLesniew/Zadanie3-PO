@@ -5,7 +5,7 @@
 #include<math.h>
 #include"LZespolona.hh"
 
-#define BLAD_PRZYROWNANIA 0.0000001
+
 
 
 template<class TYP,int ROZMIAR>
@@ -37,7 +37,8 @@ public:
     bool operator == (const Wektor<TYP,ROZMIAR> &W2) const;
     bool operator != (const Wektor<TYP,ROZMIAR> & W2) const;
 
-    TYP dlugosc() const;
+    double dlugosc() const;
+
 
     const TYP & operator[] (int index) const;
     TYP & operator[] (int index);
@@ -47,7 +48,7 @@ public:
 };
 
 template<class TYP,int ROZMIAR>
-std::ostream &operator <<(std::ostream &strm, const Wektor<TYP,ROZMIAR> &W);
+std::ostream &operator << (std::ostream &strm, const Wektor<TYP,ROZMIAR> &W);
 
 template<class TYP,int ROZMIAR>
 std::istream &operator >>(std::istream &strm, Wektor<TYP,ROZMIAR> &W);
@@ -56,7 +57,11 @@ std::istream &operator >>(std::istream &strm, Wektor<TYP,ROZMIAR> &W);
 template<class TYP,int ROZMIAR>
 Wektor<TYP,ROZMIAR> operator *(double l1,const Wektor<TYP,ROZMIAR> &W2);
 
-//template
-//double Wektor<LZespolona,5>::dlugosc() const;
+template<>
+double Wektor<LZespolona,5>::dlugosc() const;
+template<>
+double Wektor<LZespolona,4>::dlugosc() const;
+
+
 
 #endif // WEKTOR_H

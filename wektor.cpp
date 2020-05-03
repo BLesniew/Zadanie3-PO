@@ -62,25 +62,28 @@ TYP Wektor<TYP,ROZMIAR>::operator*(const Wektor<TYP,ROZMIAR> &W2) const
     return tmp;
 }
 
-/*template<class TYP, int ROZMIAR>
-Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator *(TYP li) const;
+template<class TYP, int ROZMIAR>
+Wektor<TYP,ROZMIAR> Wektor<TYP,ROZMIAR>::operator *(TYP li) const
 {
-    Wektor<TYP,ROZMIAR> tmp = 0;
+    Wektor<TYP,ROZMIAR> tmp;
     for(int i=0;i<ROZMIAR;i++)
     {
             tmp[i]=(this->tab[i]*li);
     }
     return tmp;
-}*/
+}
 
-/*template<class TYP, int ROZMIAR>
+template<class TYP, int ROZMIAR>
 bool Wektor<TYP,ROZMIAR>::operator==(const Wektor<TYP,ROZMIAR> &W2)const
 {
     bool tmp = true;
     for(int i=0;i<ROZMIAR;i++)
     {
-        if(abs(W2[i]-this->tab[i])>BLAD_PRZYROWNANIA);
+        if(abs(W2[i]-this->tab[i])>BLAD_PRZYROWNANIA)
+        {
             tmp = false;
+        }
+
     }
     return tmp;
 }
@@ -90,21 +93,21 @@ template<class TYP, int ROZMIAR>
 bool Wektor<TYP,ROZMIAR>::operator!=(const Wektor<TYP,ROZMIAR> &W2)const
 {
     return !(W2==*this);
-}*/
+}
 
 //FUNKCJE DODATKOWE
 
-/*template<class TYP, int ROZMIAR>
-TYP Wektor<TYP,ROZMIAR>::dlugosc() const
+template<class TYP, int ROZMIAR>
+double Wektor<TYP,ROZMIAR>::dlugosc() const
 {
-    TYP tmp;
+    double tmp;
     tmp=0;
     for(int i=0;i<ROZMIAR;i++)
     {
         tmp=tmp+this->tab[i]*this->tab[i];
     }
     return sqrt(tmp*tmp);
-}*/                                                            //DLUGOSC NIE DZIALA DLA TYP = LZespolona
+}                                                            //DLUGOSC NIE DZIALA DLA TYP = LZespolona
 
 //GETTERY I SETTERY
 
@@ -157,9 +160,3 @@ Wektor<TYP,ROZMIAR> operator *(double l1,const Wektor<TYP,ROZMIAR> &W2)
     return tmp;
 }
 
-
-/*template<>
-double Wektor<LZespolona,5>::dlugosc() const
-{
-    return sqrt(*this * *this.sprzezenie());
-}*/

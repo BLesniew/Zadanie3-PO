@@ -1,5 +1,5 @@
 #include "LZespolona.hh"
-#include<limits>
+
 
 
 
@@ -155,3 +155,45 @@ LZespolona LZespolona::operator = (double liczba)
     return *this;
 }
 
+LZespolona operator / (double a,const LZespolona b)
+{
+    LZespolona tmp;
+    tmp.re = a/b.re;
+    tmp.im = a/b.im;
+    return tmp;
+}
+
+bool LZespolona::operator == (double a) const
+{
+    return (this->re-a<BLAD_PRZYROWNANIA&&this->im-a<BLAD_PRZYROWNANIA);
+}
+
+bool LZespolona::operator!=(double a) const
+{
+    return !(*this == a);
+}
+
+LZespolona LZespolona::operator * (double a) const
+{
+    LZespolona tmp;
+    tmp.im = this->im * a;
+    tmp.re = this->re * a;
+    return tmp;
+}
+
+LZespolona abs(const LZespolona a)
+{
+    LZespolona tmp;
+    tmp.re = abs(a.re);
+    tmp.im = abs(a.im);
+    return tmp;
+}
+
+bool LZespolona::operator>(double a) const
+{
+    return this->Modul()>a;
+}
+bool LZespolona::operator<(double a) const
+{
+    return this->Modul()<a;
+}
